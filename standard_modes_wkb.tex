@@ -1,0 +1,238 @@
+\documentclass[11pt]{article}
+
+%% WRY has commented out some unused packages %%
+%% If needed, activate these by uncommenting
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+%\geometry{landscape}                % Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+
+%for figures
+%\usepackage{graphicx}
+
+\usepackage{color}
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+%% for graphics this one is also OK:
+\usepackage{epsfig}
+
+%% AMS mathsymbols are enabled with
+\usepackage{amssymb,amsmath}
+
+%% more options in enumerate
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+%% insert code
+\usepackage{listings}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{hyperref}
+
+%% colors
+\usepackage{graphicx,xcolor,lipsum}
+
+
+\usepackage{mathtools}
+
+\usepackage{graphicx}
+\newcommand*{\matminus}{%
+  \leavevmode
+  \hphantom{0}%
+  \llap{%
+    \settowidth{\dimen0 }{$0$}%
+    \resizebox{1.1\dimen0 }{\height}{$-$}%
+  }%
+}
+
+\title{On WKB approximate solutions for standard baroclinic modes}
+\author{Cesar B Rocha\thanks{Scripps Institution of Oceanography, University of California, San Diego; \texttt{crocha@ucsd.edu}}}
+\date{\today}
+
+\begin{document}
+
+\include{mysymbols}
+
+\maketitle
+
+In this notes I derive approximate WKB solutions to the standard baroclinic modes of physical oceanography. The elementary textbook example with constant buoyancy frequency is recovered as a special case. 
+
+\section{Pressure modes}
+
+The standard baroclinic modes for pressure, here denoted $\sp_n(z)$,  is defined by the regular Sturm-Liouville eigenproblem
+
+\beq
+\label{eigpb}
+\sL \sp_n = -\kappa_n^2 \sp_n\com
+\eeq
+with homogeneous Neumann boundary conditions
+\beq
+\label{bc}
+@z = -h,\,0:\qquad \sp_n' = 0\com
+\eeq
+where
+\beq
+\label{strech}
+\sL \defn \frac{\dd}{\dd z}\frac{f_0^2}{N^2}\frac{\dd}{\dd z} \com
+\eeq
+is a self-adjoint linear operator. Hence the eigenmodes, $\sp_n$, are orthogonal. The real egeinvalues, $\kappa_n$, are the deformation wavenumber of the $n$'th mode. It is convenient to normalize the eigenmodes to have the unit $L^2$-norm 
+\beq
+\label{normalization0}
+\frac{1}{H}\int_{-h}^{0}\!\! \sp_n \sp_m \dd z = \delta_{mn}\com
+\eeq
+where $\delta_{mn}$ is the Dirac delta. Equation \eqref{eigpb} can be rewritten as
+\beq
+\label{eigpb_wkb}
+\bur \sp_n'' + \left[\bur\right]' \sp_n' + \kappa_n^2 \,\sp_n = 0\per
+\eeq
+Introducing the following definitions
+\beq
+\label{notation}
+\ep \defn \frac{1}{\kappa_n} \qquad \text{and} \qquad S^2(z) \defn \ibur \per 
+\eeq
+we have the renotated equation
+\beq
+\label{dirich_eigpb_wkb_ep}
+\ep^2\, \sp_n'' - \left[\log S^2(z)\right]' \sp_n' + S^2(z) \sp_n = 0\per
+\eeq
+In the WKB spirit we assume that $S^2(z)$ is slowly varying i.e., the buoyancy frequency $N^2(z)$ does not vary very fast. (This assumption may be problematic near the base of the mixed-layer.) We also assume that $\ep$ is small; the accuracy of the WKB solution improves with mode number. We now make the exponential approximation (e.g., Bender and Orszag)
+\beq
+\sp_n^e \defn \ee^{Q(z)/\ep}\per
+\eeq
+Hence
+\beq
+{\sp_n^e}' = \frac{Q'(z)}{\ep}\sp_n^e\com
+\eeq
+and 
+\beq
+{\sp_n^e}'' = \left[\left(\frac{Q'(z)}{\ep}\right)^2 + \frac{Q''(z)}{\ep} \right]\sp_n^e\com
+\eeq
+Next we expand $Q(z)$ in powers of $\ep$
+\beq
+\label{aseries}
+Q(z) = Q_0(z)  + \ep\,Q_1(z) + \ep^2\,Q_2(z) + \mathcal{O}(\ep^3)\per
+\eeq
+Substituting \eqref{aseries} in \eqref{dirich_eigpb_wkb_ep} we obtain, to lowest order, $\mathcal{O}(\ep^0)$,
+\beq
+\label{lowest_order_eqn}
+Q_0'^2 + S^2(z) = 0\per
+\eeq
+Thus
+\beq
+\label{Q0}
+Q_0 = \pm \ii \int^z \!\!\!S(\xi) \,\dd \xi  = \pm \ii \tfrac{1}{f_0} \int^z \!\!\!N(\xi) \,\dd \xi \per
+\eeq
+At next order, $\mathcal{O}(\ep)$, we have
+\beq
+\label{first_order_eqn}
+2\,Q_0'Q_1' + Q_0'' - Q_0'  \left[\log S^2(z)\right]' = 0\per
+\eeq
+Hence
+\beq
+\label{Q_1}
+Q_1  =   \frac{1}{2} \log S^2(z) - \frac{1}{2}\log \pm \ii S(z) + \text{const}\,\, \per
+\eeq
+Notice that the imaginary part in the $\log$ in \eqref{Q_1} just contributes to the irrelevant constant. Thus
+\beq
+Q_1 = \log \sqrt{S(z)} + \text{const} \,\, \per
+\eeq
+In the most common WKB approximation (a.k.a ``physical optics'') we keep terms to $\mathcal{O}(\ep)$ in the expansion \eqref{aseries}. The solution to \eqref{dirich_eigpb_wkb_ep}, consistent with the bottom boundary condition \eqref{bc}, is
+\beq
+\sp_n^{po} = A_n\, \sqrt{N(z)}\, \cos \left(\frac{\kappa_n}{f_0} \int_{-h}^{z} \!\!\!N(\xi) \dd \xi\right)\com
+\eeq
+where $A_n$ is a constant. By imposing the boundary condition at $z=0$ \eqref{bc}, we obtain the eigenvalues $\kappa_n$:
+\beq
+\label{kappan}
+\kappa_n = \frac{n \pi \, f_0}{\overline{N}\,h} \com\qquad n=0,1,2,\ldots \com
+\eeq
+where
+\beq
+\label{N_avg}
+\overline{N} =\frac{1}{h} \int_{-h}^0N(\xi)\dd \xi\per
+\eeq
+The constant $A_n$ is determined by the normalization condition \eqref{normalization0}. We have
+\beq
+\label{an_eqn}
+A_n^2 \, \int_{-h}^{0}\!\! N(z) \cos \left(\frac{\kappa_n}{f_0}\int_{-h}^{z}\!\!\!N(\xi) \dd \xi\right) \dd z = H\com\qquad n\ge 1\per
+\eeq
+The integral in \eqref{an_eqn} can be evaluated exactly by making the change of variables 
+\beq
+\eta \defn \frac{\kappa_n}{f_0}\int_{-h}^{z}\!\!\! N(\xi) \dd \xi  \qquad \Rightarrow \qquad \dd\eta = \frac{\kappa_n}{f_0}N(z) \dd z\com
+\eeq
+and using the expression for the eigenvalues \eqref{kappan}. We obtain 
+\beq
+A_n = \Big(2/\overline{N} \Big)^{1/2} \com\qquad n\ge 1\per
+\eeq
+Thus the WKB approximate solution to the standard pressure modes is
+\beq
+\sp_n^{po} = \left[\frac{2\,N(z)}{\Nb} \right]^{1/2}\!\!\cos\left( \frac{n \pi}{\Nb\,h} \,\,\,\int_{-h}^{z} \!N(\xi) \dd \xi\right)\com\qquad n\ge1\per
+\eeq
+The amplitude of the baroclinic modes  at the boundaries are independent of the eigenvalue:
+\beq
+\sp_n^{po}(z=0) = (-1)^{n} \left[\frac{2 N(0)}{\Nb}\right]^{1/2}\com
+\eeq
+and
+\beq
+\sp_n^{po}(z=-h) = \left[\frac{2 N(-h)}{\Nb}\right]^{1/2}\per
+\eeq
+
+The barotropic mode is not recovered from the WKB solution because $\kappa_0 = 0$. From \eqref{eigpb} we have that with $\kappa_0 = 0$, the barotropic mode is constant, independent of the stratification. With the normalization \eqref{normalization0} we obtain $\sp_0 = 1$.
+
+\subsection*{Constant buoyancy frequency}
+With $N = \text{const.}$  the modes are the simple sinusoids. That result is recovered as a special case of the WKB solution. We have $\sp_0^{po} = 1$ and
+\beq
+\sp_n^{po} = \sqrt{2} \cos\left[n \pi (1+z/h)\right]\per
+\eeq
+
+\section{Density modes}
+Similarly the baroclinic modes for density, here denoted by $\sr_n$, are defined via the eigenproblem 
+\beq
+\label{eig_prob_rho}
+\sr_n'' = -\kappa_n^2 \ibur \sr_n\com
+\eeq
+with homogeneous Dirichlet boundary conditions
+\beq
+\label{rho_bc}
+@z = -h,0: \qquad \sr_n = 0\com
+\eeq
+and normalization
+\beq
+\label{normalization2}
+\frac{1}{h}\int_{-h}^0 \!\!\sr_n \sr_m \dd z = \delta_{mn}\per 
+\eeq
+Alternatively, we can work on  the approximation from the beginning. The WKB approximate solution to \eqref{eig_prob_rho}-\eqref{rho_bc}, consistent with the bottom boundary conditions \eqref{rho_bc}, is
+\beq
+\sr_n^{po} = \frac{B_n}{\sqrt{N(z)}} \sin \left(\frac{\kappa_n}{f_0} \int_{-h}^{z} N(\xi)\dd \xi \right) \com
+\eeq
+The eigenvalues $\kappa_n$ are the same as before \eqref{kappan}. (This should be no surprise because it follow  from the definition of $\sp_n$ and $\sr_n$. Nonetheless,  the verification is a good sanity check.) To find $B_n$ we use the normalization \eqref{normalization2}
+\beq
+\label{bn_eqn}
+B_n^2 \, \int_{-h}^{0}\!\!\frac{1}{N(z)} \sin \left(\frac{\kappa_n}{f_0}\int_{-h}^{z}\!\!\!N(\xi) \dd \xi\right) \dd z = h\com\qquad n\ge 1\per
+\eeq
+We use a similar trick as above i.e., we change variables with
+\beq
+\eta \defn \frac{\kappa_n}{N^2(z) f_0}\int_{-h}^{z}\!\!\! N(\xi) \dd \xi  \qquad \Rightarrow \qquad \dd\eta = \frac{\kappa_n}{N(z) f_0} \dd z\com
+\eeq
+where, in the WKB spirit, use the fact that $N(z)$ is slowly varying when differentiating the relation above. We obtain
+\beq
+B_n = \Big(2/\Nb\Big)^{1/2}\per
+\eeq
+Thus the WKB approximate solution to the density modes is
+\beq
+\label{rpo_final}
+\sr_n^{po} = \left(\frac{2}{\Nb N(z)}\right) \sin \left(\frac{n \pi}{\Nb\,h} \int_{-h}^{z} N(\xi)\dd \xi \right)\com\qquad n\ge 1 \per
+\eeq
+Finally, note that the modes are simply related
+\beq
+\frac{\dd \sr_n^{po}}{\dd z} = \underbrace{\frac{n\pi}{\Nb\,h}}_{=\kappa_n/f_0}\,\sp_n^{po}\per
+\eeq
+
+\subsection*{Constant buoyancy frequency}
+Again we recover the $N = \text{const.}$ special case from \eqref{rpo_final}:
+\beq
+\sr_n^{po} = \frac{\sqrt{2}}{\Nb} \sin \left[n\pi(1 + z/h)\right]\per
+\eeq
+
+\end{document}
