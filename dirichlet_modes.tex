@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+
+%% WRY has commented out some unused packages %%
+%% If needed, activate these by uncommenting
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+%\geometry{landscape}                % Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+
+%for figures
+%\usepackage{graphicx}
+
+\usepackage{color}
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+%% for graphics this one is also OK:
+\usepackage{epsfig}
+
+%% AMS mathsymbols are enabled with
+\usepackage{amssymb,amsmath}
+
+%% more options in enumerate
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+%% insert code
+\usepackage{listings}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{hyperref}
+
+%% colors
+\usepackage{graphicx,xcolor,lipsum}
+
+
+\usepackage{mathtools}
+
+\usepackage{graphicx}
+\newcommand*{\matminus}{%
+  \leavevmode
+  \hphantom{0}%
+  \llap{%
+    \settowidth{\dimen0 }{$0$}%
+    \resizebox{1.1\dimen0 }{\height}{$-$}%
+  }%
+}
+
+
+\title{On the Dirichlet modes of Scott and Furnival JPO 2012}
+\author{Cesar B Rocha\thanks{Scripps Institution of Oceanography, University of California, San Diego; \texttt{crocha@ucsd.edu}}}
+\date{\today}
+
+\begin{document}
+
+\include{mysymbols}
+
+\maketitle
+
+The ``Dirchlet modes'' Scott and Furnival JPO 2012 (hereafter SF12) should not have zero slope at the surface unless the buoyancy frequency is zero or behaves wildy at the surface. The authors do not show the buoyancy profile used in their calculations. In an appendix the authors do mention that the buoyancy frequency at the surface is very small. This can be account for the seemly ``flat'' slope of the ``Dirichlet modes'' neat the surface (see their figure 1b).
+
+\section{WKB approximate solution to ``Dirichlet modes''}
+
+The ``'Dirichlet modes'', here denoted $\sD_n$, satisfy
+
+\beq
+\label{dirich_eigpb}
+\frac{\dd}{\dd z}\left[\bur \frac{\dd\sD_n}{\dd z} \right] = -\kappa_n^2 \sD_n\com
+\eeq
+with boundary conditions
+\beq
+\label{dirich_bc}
+@z = -H:\qquad \frac{\dd \sD_n}{\dd z}= 0\com
+\eeq
+and
+\beq
+\label{dirich_bc0}
+@z = 0:\qquad \sD_n = 0 \per
+\eeq
+Equation \eqref{dirich_eigpb} can be rewritten as
+\beq
+\label{dirich_eigpb_wkb}
+\bur \frac{\dd^2\sD_n}{\dd z^2} + \frac{\dd \sD_n}{\dd z}\,\frac{\dd}{\dd z}\bur + \kappa_n^2 \sD_n = 0\per
+\eeq
+We are going to obtain WKB approximate solution to \eqref{dirich_eigpb_wkb}. We use the following notation
+
+\beq
+\label{notation}
+\ep \defn \frac{1}{\kappa_n} \qquad \text{and} \qquad S^2(z) \defn \ibur \per 
+\eeq
+With the definitions in \eqref{notation} we have the renotated equation
+\beq
+\label{dirich_eigpb_wkb_ep}
+\ep^2\,\frac{\dd^2\sD_n}{\dd z^2} - \frac{\dd}{\dd z}\left(\log S^2(z)\right)  \frac{\dd \sD_n}{\dd z} + S^2(z) \sD_n = 0\per
+\eeq
+In the WKB spirit we assume that $S^2(z)$ is slowly varying i.e., the buoyancy frequency $N^2(z)$ does not vary very fast. (This assumption may be problematic near the base of the mixed-layer.) We also assume that $\ep$ is small; the accuracy of the WKB solution improves with mode number. We now make the exponential approximation (e.g., Bender and Orszag)
+\beq
+\sD_n^e \defn \ee^{Q(z)/\ep}\per
+\eeq
+Thus we have
+\beq
+{\sD_n^e}' = \frac{Q'(z)}{\ep}\sD_n^e\com
+\eeq
+and 
+\beq
+{\sD_n^e}'' = \left[\left(\frac{Q'(z)}{\ep}\right)^2 + \frac{Q''(z)}{\ep} \right]\sD_n^e\com
+\eeq
+where primes represent differentiation with respect to $z$.
+We now expand $Q(z)$ in powers of $\ep$
+
+\beq
+\label{aseries}
+Q(z) = Q_0(z)  + \ep\,Q_1(z) + \ep^2\,Q_2(z) + \mathcal{O}(\ep^3)\per
+\eeq
+Substituting \eqref{aseries} in \eqref{dirich_eigpb_wkb_ep} we obtain, to lowest order $\mathcal{O}(\ep^0)$,
+\beq
+\label{lowest_order_eqn}
+Q_0'^2 + S^2(z) = 0\per
+\eeq
+Thus
+\beq
+\label{Q0}
+Q_0 = \pm \ii \int^z \!\!\!S(\xi) \,\dd \xi \per
+\eeq
+At $\mathcal{O}(\ep)$ we have
+\beq
+\label{first_order_eqn}
+2\,Q_0'Q_1' + Q_0'' - Q_0' \frac{\dd}{\dd z} \left(\log S^2(z)\right) = 0\per
+\eeq
+Hence
+\beq
+\label{Q_1}
+Q_1  =   \frac{1}{2} \left(\log S^2(z)\right) - \frac{1}{2} \left(\log \pm \ii S(z) \right) + \text{const}\,\, \per
+\eeq
+Notice that the imaginary part in the $\log$ in \eqref{Q_1} just contributes to the irrelevant constant. Thus
+\beq
+Q_1 = \log \sqrt{S(z)} + \text{const} \,\, \per
+\eeq
+In the  ``physical optics'' approximation we keep the first two terms in the expansion \eqref{aseries}. The solution to \eqref{dirich_eigpb_wkb_ep}, consistent with the bottom boundary condition \eqref{dirich_bc}, is
+
+\beq
+D_n^{po} = A_n\, \sqrt{N(z)}\, \cos \left(\frac{\kappa_n}{f_0} \int_{-H}^{z} \!\!\!N(\xi) \dd \xi\right)\com
+\eeq
+where $A_n$ is a constant. By imposing the boundary condition at $z=0$ \eqref{dirich_bc0}, we obtain $\kappa_n$:
+
+\beq
+\label{kappan}
+\kappa_n = \frac{(n + 1/2) \pi \, f_0}{\int_{-H}^0N(\xi)\dd \xi} \com\qquad n=0,1,2,\ldots 
+\eeq
+
+The constant $A_n$ is determined by the normalization condition 
+
+\beq
+\frac{1}{H}\int_{-H}^{0}\!\!\!\sD_n\,\sD_m \dd z = \delta_{mn}\com 
+\eeq
+which gives 
+\beq
+\label{an_eqn}
+A_n^2 \, \int_{-H}^{0}\!\! N(z) \cos \left(\frac{\kappa_n}{f_0}\int_{-H}^{z}\!\!\!N(\xi) \dd \xi\right) \dd z = H\per
+\eeq
+The integral in \eqref{an_eqn} can be evaluated exactly by making the change of variables 
+
+\beq
+\eta \defn \cos \left(\frac{\kappa_n}{f_0}\int_{-H}^{z}\!\!\! N(\xi) \dd \xi \right)\com\qquad \dd\eta = \frac{\kappa_n}{f_0}N(z) \dd z\com
+\eeq
+and using the expression for the eigenvalues \eqref{kappan}. We obtain 
+\beq
+A_n = \left[\frac{2\,H}{\int_{-H}^{0}\! N(\xi) \dd \xi} \right]^{1/2}
+\eeq
+Thus the WKB approximate solution to the ``Dirichlet modes'' is
+\beq
+D_n^{po} = \left[\frac{2\,N(z)\,H}{\int_{-H}^{0}\! N(\xi) \dd \xi} \right]^{1/2}\!\!\cos \left( \frac{(n + 1/2)\pi}{\int_{-H}^{0} \!N(\xi) \dd \xi} \,\,\,\int_{-H}^{z} \!N(\xi) \dd \xi\right)\per
+\eeq
+The slope of $D_n^{po}$ is, to lowest order,
+\beq
+\frac{\dd D_n^{po}}{\dd z} =  \frac{\sqrt{2} \, N(z)\,(n+1/2)\pi}{\int_{-H}^0 N(\xi) \dd \xi}  \sin \left(\frac{(n + 1/2)\pi}{\int_{-H}^{0} \!N(\xi) \dd \xi} \,\,\,\int_{-H}^{z} \!N(\xi) \dd \xi\right)\per
+\eeq
+
+\subsection*{The constant buoyancy frequency limit}
+With $N = \text{const.}$ we obtain
+
+\beq
+D_n^{po} = \sqrt{2} \cos\left[\pi\,(n+1/2)(1+z/H)\right]\com
+\eeq
+and
+
+\beq
+\frac{\dd D_n^{po}}{\dd z}\Bigg|_{z=0} = \sqrt{2}\,(n+1/2)\pi \sin \left[\pi\,(n+1/2)(1+z/H)\right]\per
+\eeq
+The slope at the surface is $\pm\sqrt{2} \,(n+1/2)\pi$ which is clearly non-zero.
+
+\subsection*{Non-constant stratification}
+For variable buoyancy profile the slope at the surface is
+\beq
+\frac{\dd D_n^{po}}{\dd z}\Bigg|_{z=0} =  \frac{\sqrt{2} \,N(0) \, H\,(n+1/2)\pi}{\int_{-H}^0 N(\xi) \dd \xi}\per
+\eeq
+The slope of the ``Dirichlet modes'' at the surface depends on the surface buoyancy frequency which can be problematic. The slope if $N(z)$ vanishes at the surface. Moreover, if $N(z)$ varies rapidly near the surface, the WKB approximation is not accurate.       
+
+\end{document}
