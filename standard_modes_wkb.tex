@@ -47,7 +47,7 @@
   }%
 }
 
-\title{On WKB approximate solutions for standard baroclinic modes}
+\title{WKB approximate solutions for standard baroclinic modes}
 \author{Cesar B Rocha\thanks{Scripps Institution of Oceanography, University of California, San Diego; \texttt{crocha@ucsd.edu}}}
 \date{\today}
 
@@ -72,7 +72,7 @@ with homogeneous Neumann boundary conditions
 \label{bc}
 @z = -h,\,0:\qquad \sp_n' = 0\com
 \eeq
-where
+and the self-adjoint Linear operator
 \beq
 \label{strech}
 \sL \defn \frac{\dd}{\dd z}\frac{f_0^2}{N^2}\frac{\dd}{\dd z} \com
@@ -134,11 +134,11 @@ Hence
 \label{Q_1}
 Q_1  =   \frac{1}{2} \log S^2(z) - \frac{1}{2}\log \pm \ii S(z) + \text{const}\,\, \per
 \eeq
-Notice that the imaginary part in the $\log$ in \eqref{Q_1} just contributes to the irrelevant constant. Thus
+Notice that the imaginary part in the $\log$ in \eqref{Q_1} just contributes an irrelevant constant. Thus
 \beq
 Q_1 = \log \sqrt{S(z)} + \text{const} \,\, \per
 \eeq
-In the most common WKB approximation (a.k.a ``physical optics'') we keep terms to $\mathcal{O}(\ep)$ in the expansion \eqref{aseries}. The solution to \eqref{dirich_eigpb_wkb_ep}, consistent with the bottom boundary condition \eqref{bc}, is
+In the most common WKB approximation (a.k.a ``physical optics'') we truncate \eqref{aseries} at $\mathcal{O}(\ep)$. The solution to \eqref{dirich_eigpb_wkb_ep}, consistent with the bottom boundary condition \eqref{bc}, is
 \beq
 \sp_n^{po} = A_n\, \sqrt{N(z)}\, \cos \left(\frac{\kappa_n}{f_0} \int_{-h}^{z} \!\!\!N(\xi) \dd \xi\right)\com
 \eeq
@@ -147,10 +147,10 @@ where $A_n$ is a constant. By imposing the boundary condition at $z=0$ \eqref{bc
 \label{kappan}
 \kappa_n = \frac{n \pi \, f_0}{\overline{N}\,h} \com\qquad n=0,1,2,\ldots \com
 \eeq
-where
+where the mean buoyancy frequency is
 \beq
 \label{N_avg}
-\overline{N} =\frac{1}{h} \int_{-h}^0N(\xi)\dd \xi\per
+\overline{N} \defn\frac{1}{h} \int_{-h}^0N(\xi)\dd \xi\per
 \eeq
 The constant $A_n$ is determined by the normalization condition \eqref{normalization0}. We have
 \beq
@@ -169,7 +169,7 @@ Thus the WKB approximate solution to the standard pressure modes is
 \beq
 \sp_n^{po} = \left[\frac{2\,N(z)}{\Nb} \right]^{1/2}\!\!\cos\left( \frac{n \pi}{\Nb\,h} \,\,\,\int_{-h}^{z} \!N(\xi) \dd \xi\right)\com\qquad n\ge1\per
 \eeq
-The amplitude of the baroclinic modes  at the boundaries are independent of the eigenvalue:
+The amplitude of the baroclinic modes  at the boundaries is independent of the eigenvalue:
 \beq
 \sp_n^{po}(z=0) = (-1)^{n} \left[\frac{2 N(0)}{\Nb}\right]^{1/2}\com
 \eeq
@@ -181,7 +181,7 @@ and
 The barotropic mode is not recovered from the WKB solution because $\kappa_0 = 0$. From \eqref{eigpb} we have that with $\kappa_0 = 0$, the barotropic mode is constant, independent of the stratification. With the normalization \eqref{normalization0} we obtain $\sp_0 = 1$.
 
 \subsection*{Constant buoyancy frequency}
-With $N = \text{const.}$  the modes are the simple sinusoids. That result is recovered as a special case of the WKB solution
+With $N = \text{const.}$  the modes are simple sinusoids. That exact result is recovered as a special case of the WKB solution
 \beq
 \sp_n^{po} = \sqrt{2} \cos\left[n \pi (1+z/h)\right]\per
 \eeq
