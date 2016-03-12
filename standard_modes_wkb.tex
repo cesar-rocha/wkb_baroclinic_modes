@@ -132,7 +132,7 @@ At next order, $\mathcal{O}(\ep)$, we have
 Hence
 \beq
 \label{Q_1}
-Q_1  =   \frac{1}{2} \log S^2(z) - \frac{1}{2}\log \pm \ii S(z) + \text{const}\,\, \per
+Q_1  =   \frac{1}{2} \log S(z) - \frac{1}{2}\log \pm \ii S(z) + \text{const}\,\, \per
 \eeq
 Notice that the imaginary part in the $\log$ in \eqref{Q_1} just contributes an irrelevant constant. Thus
 \beq
@@ -155,7 +155,7 @@ where the mean buoyancy frequency is
 The constant $A_n$ is determined by the normalization condition \eqref{normalization0}. We have
 \beq
 \label{an_eqn}
-A_n^2 \, \int_{-h}^{0}\!\! N(z) \cos \left(\frac{\kappa_n}{f_0}\int_{-h}^{z}\!\!\!N(\xi) \dd \xi\right) \dd z = H\com\qquad n\ge 1\per
+A_n^2 \, \int_{-h}^{0}\!\! N(z) \cos^2 \left(\frac{\kappa_n}{f_0}\int_{-h}^{z}\!\!\!N(\xi) \dd \xi\right) \dd z = H\com\qquad n\ge 1\per
 \eeq
 The integral in \eqref{an_eqn} can be evaluated exactly by making the change of variables 
 \beq
@@ -217,22 +217,66 @@ We use a similar trick as above i.e., we change variables with
 \eeq
 where, in the WKB spirit, we used the fact that $N(z)$ is slowly varying when differentiating the relation above. We obtain
 \beq
-B_n = \Big(2/\Nb\Big)^{1/2}\per
+B_n = \Big(2 N^2(0)/\Nb\Big)^{1/2}\per
 \eeq
 Thus the WKB approximate solution to the density modes is
 \beq
 \label{rpo_final}
-\sr_n^{po} = \left(\frac{2}{\Nb N(z)}\right) \sin \left(\frac{n \pi}{\Nb\,h} \int_{-h}^{z} N(\xi)\dd \xi \right)\com\qquad n\ge 1 \per
+\sr_n^{po} = \left(\frac{2 N^2(0)}{\Nb N(z)}\right)^{1/2} \sin \left(\frac{n \pi}{\Nb\,h} \int_{-h}^{z} N(\xi)\dd \xi \right)\com\qquad n\ge 1 \per
 \eeq
 Finally, note that the modes are simply related
 \beq
-\frac{\dd \sr_n^{po}}{\dd z} = \underbrace{\frac{n\pi}{\Nb\,h}}_{=\kappa_n/f_0}\,\sp_n^{po}\per
+\frac{\dd \sr_n^{po}}{\dd z} = N(0) \underbrace{\frac{n\pi}{\Nb\,h}}_{=\kappa_n/f_0}\,\sp_n^{po}\per
 \eeq
 
 \subsection*{Constant buoyancy frequency}
 Again we recover the $N = \text{const.}$ special case from \eqref{rpo_final}:
 \beq
-\sr_n^{po} = \frac{\sqrt{2}}{\Nb} \sin \left[n\pi(1 + z/h)\right]\per
+\sr_n^{po} = \sqrt{2}\sin \left[n\pi(1 + z/h)\right]\per
 \eeq
+
+\section{Probing WKB}
+How accurate is the WKB approximate solution for the standard modes? To answer this questions,
+we first recall that the fundamental assumption in WKB is the slowly varying nature of $N^2(z)$.
+Second, the introduction  perturbation series \eqref{aseries} hinges on the smallness of the parameter
+$\ep$. Hence we expect the accuracy to increase with mode number. Specifically, the physical optics
+approximation truncates the series at first order, so the error decreases as $n^{-2}$.
+
+
+To verify the predictions above for the accuracy of the WKB solution, we consider an example with exponential stratification: $N^2(z) = N_0^2 \ee^{-\alpha z}$,
+where $N_0$ is the stratification frequency at the surface and $\alpha^{-1}$ is the e-folding depth (see figure 1). In this simple example,
+the standard modes can be calculated analytically in terms of Bessel functions (see LaCasce JPO 2012).
+Figure \ref{N2} shows the stratification profiles for two different e-folding scales: $\alpha=2$ and $\alpha=5$. With $\alpha=5$,
+the buoyancy frequency is strongly surface intensified as opposed to the slowly varying $\alpha=2$ profile. Indeed, the relative
+error of the WKB eigenvalue \eqref{kappan} as compared to the exact eigenvalue is more than 10 times smaller for $\alpha=2$
+than for $\alpha=5$ (see figure \ref{rerror}) --- the relative error in the first deformation wavenumber for $\alpha=2$ is spetacularly less than  $1\%$! As expected,
+the error decreases with modes number $n$ as $n^{-2}$. The eigenmodes are also well approximated by the WKB approximation (see figure \ref{eigenstructure}
+for the 4 gravest baroclinic modes with $\alpha=5$).  While there are some differences in amplitude, particularly at depth, the overall structure and zero-crossing depths
+are well captured by the WKB approximation.
+
+
+\begin{figure}[!ht]
+\label{N2}
+  \centering
+    \includegraphics[width=0.5\textwidth]{figs/N2.pdf}
+      \caption{The exponential stratification $N^2(z) = N_0^2 \ee^{-\alpha z}$ with $\alpha = 5$ and $\alpha=2$.}
+\end{figure}
+
+\begin{figure}[!ht]
+\label{rerror}
+  \centering
+    \includegraphics[width=0.5\textwidth]{figs/RelativeError.pdf}
+      \caption{The relative error in deformation wavenumber square (the eigenvalue) for exponential stratification $N^2(z) = N_0^2 \ee^{-\alpha z}$ with $\alpha = 5$ and $\alpha=2$. The magnitude of the error decreases with $\alpha$ ---  the buoyancy frequency is more slowly varying with $\alpha=2$.  The error decreases with mode
+      number as $n^{-2}$ ($-2$ slope in log$\times$log space).}
+\end{figure}
+
+\begin{figure}[!ht]
+\label{eigenstructure}
+  \centering
+    \includegraphics[width=0.9\textwidth]{figs/Eigenstructure.pdf}
+      \caption{The pressure modes for exponential stratification $N^2(z) = N_0^2 \ee^{-\alpha z}$ with $\alpha = 5$ calculated exactly (black) and using WKB (blue).}
+\end{figure}
+
+
 
 \end{document}
